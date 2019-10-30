@@ -40,21 +40,15 @@
 
 <script>
 // @ is an alias to /src
+import searchMixin from "@/mixins/searchMixin.js";
 
 export default {
   name: "home",
+  mixins: [searchMixin],
   data() {
     return {
       search_string: ""
     };
-  },
-  methods: {
-    search() {
-      this.$router.push({
-        path: "results",
-        query: { search: this.search_string }
-      });
-    }
   }
 };
 </script>

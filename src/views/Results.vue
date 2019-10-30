@@ -14,21 +14,25 @@
           <b-input-group class>
             <b-form-input></b-form-input>
             <b-input-group-append>
-              <b-button variant="info">Search</b-button>
+              <b-button variant="outline-info" @click="search">Search</b-button>
             </b-input-group-append>
           </b-input-group>
         </b-nav-form>
       </b-navbar-nav>
     </b-navbar>
+    <!-- end navigation  -->
 
     <result-list :photos="photos"></result-list>
   </div>
 </template>
 
 <script>
+import searchMixin from "@/mixins/searchMixin.js";
+
 import { api } from "@/service.js";
 import ResultList from "@/components/ResultList";
 export default {
+  mixins: [searchMixin],
   data() {
     return {
       data: {},
@@ -54,6 +58,18 @@ export default {
     }`;
     api.get(url).then(response => {
       next(vm => vm.setData(response));
+    });
+  },
+
+  beforeRouteUpdate(to, from, next) {
+    this.photos = null;
+    this.data = null;
+    let url = `/search?query=${to.query.search}&per_page=20&page=${
+      to.query.page ? to.query.page : 1
+    }`;
+    api.get(url).then(response => {
+      this.setData(response);
+      next();
     });
   }
 };
