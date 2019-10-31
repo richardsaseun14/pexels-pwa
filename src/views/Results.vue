@@ -31,6 +31,7 @@
 
     <result-list :photos="photos"></result-list>
 
+    <!-- //TODO: bug :next and prev buttons not working on init -->
     <div class="overflow-auto">
       <b-pagination-nav
         first-text="⏮"

@@ -923,7 +923,7 @@
     webpack "^4.0.0"
     yorkie "^2.0.0"
 
-"@vue/cli-plugin-pwa@^4.0.0":
+"@vue/cli-plugin-pwa@^4.0.5":
   version "4.0.5"
   resolved "https://registry.npm.taobao.org/@vue/cli-plugin-pwa/download/@vue/cli-plugin-pwa-4.0.5.tgz#e5b65fa453a52af1a06f0d71e782625d52e260e1"
   integrity sha1-5bZfpFOlKvGgbw1x54JiXVLiYOE=
