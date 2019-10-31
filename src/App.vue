@@ -1,10 +1,16 @@
 <template>
-  <div id="app">
-    <!-- <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/results">Results</router-link>
-    </div>-->
+  <div id="app" class="h-100">
     <router-view />
+
+    <div class="footer bg-white py-2 fixed-bottom">
+      <div class="container text-center">
+        <small class="m-0">
+          Built with 💜 by
+          <b-link href="http://www.richardsaseun.com">Richard Saseun</b-link>with
+          <b-link href="http://www.richardsaseun.com">Pexels API</b-link>
+        </small>
+      </div>
+    </div>
   </div>
 </template>
 

@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css?family=Lora:700|Nunito:400,800&display=swap');
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Lora', serif;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+}
+
+a {
+    color: #52afa2;
+
+}
+
+a:hover {
+    text-decoration: none;
+}
