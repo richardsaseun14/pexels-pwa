@@ -1,6 +1,6 @@
 <template>
   <div class="results">
-    <b-navbar sticky toggleable="md" type="dark" variant="dark">
+    <b-navbar sticky toggleable="md" type="dark" variant="dark" class="mb-4">
       <div class="container">
         <b-navbar-brand to="/">
           <img height="30" src="../assets/pexels.png" alt="Logo" />
@@ -24,10 +24,28 @@
     </b-navbar>
     <!-- end navigation  -->
 
+    <div class="container">
+      <h4>{{$route.query.search}} Images</h4>
+      <p class="text-muted text-uppercase">100 images</p>
+    </div>
+
     <result-list :photos="photos"></result-list>
 
     <div class="overflow-auto">
-      <b-pagination-nav :link-gen="linkGen" :number-of-pages="pages" use-router></b-pagination-nav>
+      <b-pagination-nav
+        first-text="⏮"
+        prev-text="⏪"
+        next-text="⏩"
+        last-text="⏭"
+        :link-gen="linkGen"
+        :number-of-pages="pages"
+        use-router
+        align="center"
+      >
+        <template v-slot:ellipsis-text>
+          <b-spinner small type="grow"></b-spinner>
+        </template>
+      </b-pagination-nav>
     </div>
   </div>
 </template>
@@ -43,13 +61,14 @@ export default {
     return {
       search_string: "",
       data: {},
-      photos: {}
+      photos: {},
+      test: ""
     };
   },
 
   computed: {
     pages() {
-      return data.data.total_results / 20;
+      return this.data.data.total_results / 20;
     }
   },
 
@@ -61,11 +80,21 @@ export default {
     setData(data) {
       this.data = data;
       this.photos = data.data.photos;
+    },
+
+    linkGen(pageNum) {
+      // console.log("fare");
+      // this.text = route;
+      return {
+        path: "/results",
+        query: { search: this.$route.query.search, page: pageNum }
+      };
     }
   },
 
   beforeRouteEnter(to, from, next) {
     // let data = {};
+
     let url = `/search?query=${to.query.search}&per_page=20&page=${
       to.query.page ? to.query.page : 1
     }`;
