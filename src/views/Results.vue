@@ -1,5 +1,5 @@
 <template>
-  <div class="results">
+  <div class="results h-100">
     <b-navbar sticky toggleable="md" type="dark" variant="dark" class="mb-4">
       <div class="container">
         <b-navbar-brand to="/">
@@ -15,7 +15,7 @@
             <b-input-group class>
               <b-form-input v-model="search_string"></b-form-input>
               <b-input-group-append>
-                <b-button variant="outline-info" @click="search">Search</b-button>
+                <b-button variant="outline-light" @click="search">🔍</b-button>
               </b-input-group-append>
             </b-input-group>
           </b-nav-form>
@@ -32,8 +32,10 @@
     <result-list :photos="photos"></result-list>
 
     <!-- //TODO: bug :next and prev buttons not working on init -->
-    <div class="overflow-auto">
+    <!-- pagination -->
+    <div v-show="photos.length !== 0" class="overflow-auto container mt-4">
       <b-pagination-nav
+        v-model="active"
         first-text="⏮"
         prev-text="⏪"
         next-text="⏩"
@@ -41,7 +43,7 @@
         :link-gen="linkGen"
         :number-of-pages="pages"
         use-router
-        align="center"
+        align="fill"
       >
         <template v-slot:ellipsis-text>
           <b-spinner small type="grow"></b-spinner>
@@ -74,7 +76,8 @@ export default {
       search_string: "",
       data: {},
       photos: {},
-      test: ""
+      test: "",
+      active: 1
     };
   },
 

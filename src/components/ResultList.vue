@@ -1,6 +1,11 @@
 <template>
   <div class="container">
-    <div class="card-columns">
+    <div v-if="photos.length == 0" class="text-center">
+      <h1 class="display-1">😰</h1>
+      <p class="text-warning">Sorry!! No image match your search</p>
+    </div>
+
+    <div v-else class="card-columns">
       <div v-for="photo in photos" :key="photo.id" class="card">
         <!-- <div class="rich-card" :style="{background: url(photo.src.medium)}"></div> -->
         <img @click="showImage(photo.id)" class="card-img" :src="photo.src.medium" alt="Card image" />

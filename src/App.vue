@@ -7,7 +7,7 @@
         <small class="m-0">
           Built with 💜 by
           <b-link href="http://www.richardsaseun.com">Richard Saseun</b-link>with
-          <b-link href="http://www.richardsaseun.com">Pexels API</b-link>
+          <b-link href="https://www.pexels.com">Pexels API</b-link>
         </small>
       </div>
     </div>
