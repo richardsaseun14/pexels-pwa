@@ -26,7 +26,8 @@
       </template>
 
       <template v-slot:default="{ hide }">
-        <img class="img-fluid" :src="image.src.landscape" alt="Card image" />
+        <img class="img-fluid d-block d-md-none" :src="image.src.portrait" alt="Card image" />
+        <img class="img-fluid d-none d-md-block" :src="image.src.landscape" alt="Card image" />
       </template>
 
       <template v-slot:modal-footer="{ ok, cancel, hide }">
