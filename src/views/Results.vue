@@ -25,8 +25,8 @@
     <!-- end navigation  -->
 
     <div class="container">
-      <h4>{{$route.query.search}} Images</h4>
-      <p class="text-muted text-uppercase">100 images</p>
+      <h4 class="text-capitalize m-0">{{$route.query.search}} Images</h4>
+      <p class="text-info">{{data.data.total_results}} images</p>
     </div>
 
     <result-list :photos="photos"></result-list>
@@ -46,6 +46,17 @@
           <b-spinner small type="grow"></b-spinner>
         </template>
       </b-pagination-nav>
+    </div>
+
+    <div class="container text-center mb-5">
+      <p class="m-0">Photos provided by</p>
+      <b-link href="ww.pexels.com" target="_blank">
+        <img
+          height="15"
+          src="https://www.pexels.com/assets/pexels-logo-7e4af4630e66b6b786567041874586aeb1b5217589035c70a0def15aacd0f11a.png"
+          alt="pexels logo"
+        />
+      </b-link>
     </div>
   </div>
 </template>
